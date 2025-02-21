@@ -1,9 +1,12 @@
 import React, { useState } from "react";
 
+
 const TaskItem = ({ task, onUpdate, onDelete }) => {
   const [isEditing, setIsEditing] = useState(false);
   const [title, setTitle] = useState(() => task.title); // ✅ Use function for initial state
   const [description, setDescription] = useState(() => task.description);
+
+
 
   const handleSave = () => {
     if (!title.trim()) {
@@ -14,7 +17,7 @@ const TaskItem = ({ task, onUpdate, onDelete }) => {
     const updatedTask = {
       title: title.trim() || task.title, // Send new title if changed, otherwise old
       description: description.trim() || task.description, // Send new description if changed, otherwise old
-      completed: task.completed, 
+      completed: task.completed,
     };
 
     if (typeof onUpdate === "function") {
